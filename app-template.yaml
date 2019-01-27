@@ -12,9 +12,8 @@ objects:
   spec:
     runPolicy: Serial
     source:
-      contextDir: msg-processor
       git:
-        uri: https://github.com/codequester/jc-wkshp
+        uri: https://github.com/jc-wkshp/msg-processor
       type: Git
     strategy:
       sourceStrategy:
@@ -30,7 +29,7 @@ objects:
     triggers:
     - type: GitHub
       github:
-        secret: jc-wkshp-msg-app-101
+        secret: jc-wkshp-msg-app
     - type: ConfigChange
     - type: ImageChange
 - apiVersion: v1
