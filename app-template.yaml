@@ -100,7 +100,7 @@ objects:
               cpu: 100m 
               memory: 500Mi 
             limits:
-              cpu: 200m 
+              cpu: 1000m 
               memory: 1Gi 
         dnsPolicy: ClusterFirst
         restartPolicy: Always
