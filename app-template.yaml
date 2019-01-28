@@ -4,6 +4,15 @@ metadata:
   name: msg-processor-app-template
 objects:
 - apiVersion: v1
+  kind: Secret
+  metadata:
+    name: app-secrets
+  data:
+    mq-user: dXNlcg==
+    mq-pwd: cGFzczEyMw==
+    db-user: ZGJ1c2Vy
+    db-pwd: ZGJwYXNzMTIz
+- apiVersion: v1
   kind: BuildConfig
   metadata:
     labels:
@@ -57,6 +66,27 @@ objects:
         name: msg-processor
       spec:
         containers:
+        - env:
+          - name: MQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets                
+                key: mq-user
+          - name: MQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets                
+                key: mq-pwd 
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets                
+                key: db-user 
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets                
+                key: db-pwd                                           
         - image: msg-processor:latest
           imagePullPolicy: Always
           name: msg-processor
