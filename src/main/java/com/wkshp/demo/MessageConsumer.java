@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 class MessageConsumer{
 
 	@Autowired
-	private MessageRepository messageRepository;
+    private MessageRepository messageRepository;
+    
+    @Autowired
+	private PaymentRepository paymentRepository;
 
     @JmsListener(destination = "${jms.queue.destination}")
     public void processMsg(String message) {
@@ -18,6 +21,6 @@ class MessageConsumer{
         Gson g = new Gson();
         Payment payment = g.fromJson(message, Payment.class);
         System.out.println("============= After Payment: " + payment);
-        //messageRepository.save(new Message(message));
+        paymentRepository.save(payment);
     }
 }
