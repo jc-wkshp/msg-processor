@@ -98,10 +98,10 @@ objects:
           resources:
             requests:
               cpu: 100m 
-              memory: 500Mi 
+              memory: 1Mi 
             limits:
               cpu: 1000m 
-              memory: 1Gi 
+              memory: 2Gi 
         dnsPolicy: ClusterFirst
         restartPolicy: Always
         schedulerName: default-scheduler
