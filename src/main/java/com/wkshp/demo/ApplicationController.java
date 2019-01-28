@@ -29,5 +29,11 @@ class ApplicationController {
 	List<Message> getMessages(){
         return messageRepository.findAll();
     }
+
+    @PostMapping("/payment")
+	String postPayment(@RequestBody Payment payment ){
+		producer.send(payment.toString());
+		return "PAyment -["+payment+"] Successfully Sent";
+    }
     
 }

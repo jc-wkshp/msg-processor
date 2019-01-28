@@ -13,6 +13,6 @@ class MessageConsumer{
     @JmsListener(destination = "${jms.queue.destination}")
     public void processMsg(String message) {
         System.out.println("============= Received: " + message);
-        messageRepository.save(new Message(message));
+        //messageRepository.save(new Message(message));
     }
 }

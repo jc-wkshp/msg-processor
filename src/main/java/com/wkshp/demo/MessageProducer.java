@@ -17,6 +17,6 @@ class MessageProducer {
 	String destinationQueue;
 	
 	void send(String msg){
-		jmsTemplate.convertAndSend(destinationQueue, msg + "Added this text..");
+		jmsTemplate.convertAndSend(destinationQueue, msg);
 	}
 }
