@@ -1,6 +1,9 @@
 package com.wkshp.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -9,6 +12,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @Table(name="Payment")
 public class Payment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
     private String name;
     private Double amount;
     
@@ -18,6 +24,14 @@ public class Payment {
         this.name = name;
         this.amount = amount;
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
