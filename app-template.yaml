@@ -6,6 +6,8 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
+    labels:
+      app: msg-processor
     name: app-secrets
   data:
     mq-user: dXNlcg==
@@ -87,7 +89,7 @@ objects:
               secretKeyRef:
                 name: app-secrets                
                 key: db-pwd                                           
-        - image: msg-processor:latest
+          image: msg-processor:latest
           imagePullPolicy: Always
           name: msg-processor
           ports:

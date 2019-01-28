@@ -17,12 +17,19 @@ public class Payment {
 	private Integer id;
     private String name;
     private Double amount;
+    private String details;
     
     public Payment() {}
 
     public Payment(String name, Double amount) {
         this.name = name;
         this.amount = amount;
+    }
+
+    public Payment(String name, Double amount, String details) {
+        this.name = name;
+        this.amount = amount;
+        this.details = details;
     }
 
 	public Integer getId() {
@@ -47,6 +54,14 @@ public class Payment {
 
 	public void setAmount(Double amount) {
 		this.amount = amount;
+    }
+
+    public String getDetails() {
+		return details;
+	}
+
+	public void setAmount(String details) {
+		this.details = details;
     }
 
     @Override
