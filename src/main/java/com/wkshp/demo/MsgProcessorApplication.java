@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AmqProducerApplication {
+public class MsgProcessorApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(AmqProducerApplication.class, args);
+		SpringApplication.run(MsgProcessorApplication.class, args);
 	}
 }

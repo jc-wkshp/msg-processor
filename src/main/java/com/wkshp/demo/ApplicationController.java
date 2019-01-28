@@ -9,31 +9,25 @@ import org.springframework.web.bind.annotation.*;
 class ApplicationController {
 	
 	@Autowired
-    MessageProducer producer;
-    
+    private MessageProducer producer;
+
     @Autowired
-	private MessageRepository messageRepository;
+    private PaymentRepository paymentRepository;
 	
     @RequestMapping(value="/")
 	String showStatus(){
 		return "AMQ Demo Application - running.";
     }
     
-    @RequestMapping(value="/produce")
-	String produce(@RequestParam("msg")String msg){
-		producer.send(msg);
-		return "Message -["+msg+"] Successfully Sent";
-    }
-
-    @RequestMapping(value="/messages")
-	List<Message> getMessages(){
-        return messageRepository.findAll();
+    @GetMapping(value="/payments")
+	List<Payment> getPayments(){
+        return paymentRepository.findAll();
     }
 
     @PostMapping("/payment")
-	String postPayment(@RequestBody Payment payment ){
+	String postPayment(@RequestBody String payment){
 		producer.send(payment.toString());
-		return "PAyment -["+payment+"] Successfully Sent";
+		return "Payment -["+payment+"] Successfully Sent";
     }
     
 }

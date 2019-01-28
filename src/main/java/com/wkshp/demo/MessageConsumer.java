@@ -8,9 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 class MessageConsumer{
-
-	@Autowired
-    private MessageRepository messageRepository;
     
     @Autowired
 	private PaymentRepository paymentRepository;
@@ -20,7 +17,6 @@ class MessageConsumer{
         System.out.println("============= Received: " + message);
         Gson g = new Gson();
         Payment payment = g.fromJson(message, Payment.class);
-        System.out.println("============= After Payment: " + payment);
         paymentRepository.save(payment);
     }
 }
